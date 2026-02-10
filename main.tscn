@@ -24,6 +24,7 @@ albedo_color = Color(1, 1, 0, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_enemy"]
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610693, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.89842653, 0, 0.43912393, 0, 1, 0, -0.43912393, 0, 0.89842653, 1.2367897, 1.7169065, 10.092267)

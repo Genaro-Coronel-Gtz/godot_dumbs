@@ -11,3 +11,8 @@ static func solve_ballistic_velocity(from: Vector3, to: Vector3, gravity: float,
 	var vy = (diff.y + 0.5 * gravity * flight_time * flight_time) / flight_time
 	v.y = vy
 	return v
+
+# Calcula velocidad para un tiro directo (sin parábola) hacia el objetivo
+static func solve_direct_velocity(from: Vector3, to: Vector3, speed: float) -> Vector3:
+	var direction = (to - from).normalized()
+	return direction * speed

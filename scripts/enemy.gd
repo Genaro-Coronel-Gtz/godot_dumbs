@@ -2,7 +2,8 @@ extends Node3D
 
 const BULLET_SCENE = preload("res://scenes/bullet.tscn")
 const FIRE_RATE = 1.0  # segundos entre disparos
-const FLIGHT_TIME = 1.5  # Tiempo de vuelo para una trayectoria más precisa
+const FLIGHT_TIME_PARABOLIC = 1.5  # Tiempo de vuelo para una trayectoria más precisa
+const BULLET_SPEED = 25
 const FIRE_RANGE = 15.0  # Distancia máxima para disparar
 
 var time_since_last_shot = 0.0
@@ -46,6 +47,7 @@ func shoot():
 	var target_position = player.global_position + Vector3(0, 1.0, 0)
 
 	# Usar la API pública del bullet para lanzarlo (desacopla cálculo)
-	bullet_instance.launch(target_position, FLIGHT_TIME)
+	#bullet_instance.parabolic(target_position, FLIGHT_TIME_PARABOLIC)
+	bullet_instance.linear(target_position, BULLET_SPEED)
 
 	print("Bullet disparado: origen=", bullet_instance.global_position, " objetivo=", target_position)
