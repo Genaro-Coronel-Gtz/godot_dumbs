@@ -40,5 +40,6 @@ func shoot():
 	var target_position = player.global_position + Vector3(0, 1.0, 0)
 
 	# Usar la API publica del bullet para lanzarlo
-	bullet_instance.linear(target_position)
+	#bullet_instance.linear(target_position)
+	bullet_instance.parabolic(target_position)
 	print("Bullet disparado: origen=", bullet_instance.global_position, " objetivo=", target_position)
