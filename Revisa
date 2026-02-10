@@ -1,0 +1,24 @@
+Claro, voy a analizar los archivos principales del proyecto para darte un resumen. Empezaré por leer los archivos de escena y scripts.
+Basado en el análisis de los archivos, este es un resumen del proyecto:
+
+**Nombre:** Dumbs
+
+**Tipo:** Es un juego 3D simple.
+
+**Descripción:**
+El juego consiste en una escena 3D con un suelo, un personaje **jugador** (cápsula azul) y un **enemigo** (cápsula amarilla).
+
+*   **Jugador:**
+    *   Se controla con las teclas de flecha.
+    *   La cámara sigue al jugador desde una perspectiva elevada.
+
+*   **Enemigo:**
+    *   Constantemente mira hacia el jugador.
+    *   Dispara proyectiles (balas rojas) al jugador a un ritmo constante (una vez por segundo).
+
+*   **Balas:**
+    *   Son esferas rojas que se mueven en línea recta.
+    *   Desaparecen después de 5 segundos o al colisionar con algo.
+    *   Si una bala golpea al jugador, se imprime un mensaje en la consola y la bala se destruye.
+
+En resumen, es el prototipo de un juego de disparos en tercera persona donde el objetivo implícito es esquivar las balas que te dispara un enemigo estático.
