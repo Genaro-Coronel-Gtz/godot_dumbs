@@ -9,13 +9,13 @@ func _ready():
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
+	var direction = Vector3(input_dir.x, -1, input_dir.y).normalized()
 	
 	if direction:
 		velocity = direction * SPEED
 	else:
 		velocity = Vector3.ZERO
-	
+		
 	move_and_slide()
 	
 	# Actualizar posicion camara para seguir al player
