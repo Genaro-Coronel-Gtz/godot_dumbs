@@ -2,6 +2,7 @@
 extends Node
 #bullet_pool
 # Configuración del pool
+const BULLET_BLUE_SCENE = preload("res://scenes/bullet_blue.tscn")
 const BULLET_SCENE = preload("res://scenes/bullet.tscn")
 const POOL_SIZE = 30  # Cantidad inicial de bullets en el pool
 
@@ -27,6 +28,7 @@ func get_bullet() -> RigidBody3D:
 		print("Pool expandido: creando nuevo bullet")
 	else:
 		# Obtener un bullet del pool
+		print(" se retorna bullet del pool")
 		bullet = bullet_pool.pop_back()
 	
 	# Activar el bullet
