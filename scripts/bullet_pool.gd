@@ -22,6 +22,7 @@ func _ready():
 		var bullet = BULLET_SCENE.instantiate()
 		bullet.visible = false
 		bullet.set_physics_process(false)
+		bullet.bullet_type = BulletType.NORMAL
 		get_tree().root.get_node("Main").add_child(bullet)
 		bullet_pool.push_back(bullet)
 	
@@ -30,6 +31,7 @@ func _ready():
 		var bullet = BULLET_BLUE_SCENE.instantiate()
 		bullet.visible = false
 		bullet.set_physics_process(false)
+		bullet.bullet_type = BulletType.BLUE
 		get_tree().root.get_node("Main").add_child(bullet)
 		bullet_blue_pool.push_back(bullet)
 
@@ -50,6 +52,7 @@ func get_bullet(bullet_type: BulletType = BulletType.NORMAL) -> RigidBody3D:
 	if pool.is_empty():
 		# Si no hay bullets disponibles, crear uno nuevo
 		bullet = scene.instantiate()
+		bullet.bullet_type = bullet_type
 		get_tree().root.get_node("Main").add_child(bullet)
 		print("Pool expandido: creando nuevo bullet tipo ", BulletType.keys()[bullet_type])
 	else:
@@ -78,8 +81,8 @@ func return_bullet(bullet: RigidBody3D) -> void:
 	bullet.linear_velocity = Vector3.ZERO
 	bullet.time_alive = 0.0
 	
-	# Devolver al pool correspondiente (detectar por nombre de nodo)
-	if bullet.name == "BulletBlue":
+	# Devolver al pool correspondiente según tipo almacenado
+	if bullet.bullet_type == BulletType.BLUE:
 		bullet_blue_pool.push_back(bullet)
 	else:
 		bullet_pool.push_back(bullet)

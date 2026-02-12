@@ -4,6 +4,7 @@ const BULLET_LIFE_TIME = 5.0
 const FLIGHT_TIME_PARABOLIC = 1.5  # Tiempo de vuelo para una trayectoria más precisa
 const BULLET_SPEED = 25 # Velocidad de la bala en trayectoria lineal
 var time_alive = 0.0
+var bullet_type = BulletPool.BulletType.NORMAL  # Tipo de bullet para identificarlo en el pool
 
 func reset() -> void:
 	"""Reinicia el bullet para ser reutilizado en el pool"""
@@ -12,8 +13,8 @@ func reset() -> void:
 	global_position = Vector3.ZERO
 
 func fire(target: Vector3) -> void:
-	"""Dispara el bullet automáticamente según su tipo"""
-	if name == "BulletBlue":
+	"""Dispara el bullet automaticamente según su tipo"""
+	if bullet_type == BulletPool.BulletType.BLUE:
 		# Si es bullet azul, disparo parabólico
 		parabolic(target)
 	else:
