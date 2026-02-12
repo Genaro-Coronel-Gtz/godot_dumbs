@@ -1,14 +1,29 @@
-extends Node3D
+extends CharacterBody3D
 
-const BULLET_SCENE = preload("res://scenes/bullet.tscn")
 const FIRE_RATE = 1.0  # segundos entre disparos
 const FIRE_RANGE = 15.0  # Distancia máxima para disparar
 
 var time_since_last_shot = 0.0
 var player: Node3D
+var spawn_position: Vector3 = Vector3.ZERO
 
 func _ready():
+	# No buscar el player aquí, se hace en activate()
+	pass
+
+func activate() -> void:
+	"""Activa el enemigo y lo prepara para jugar"""
 	player = get_tree().root.get_node("Main/Player")
+	reset()
+
+func deactivate() -> void:
+	"""Desactiva el enemigo y lo prepara para volver al pool"""
+	player = null
+
+func reset() -> void:
+	"""Reinicia el estado del enemigo para reutilización"""
+	time_since_last_shot = 0.0
+	velocity = Vector3.ZERO
 
 func _physics_process(delta):
 	if player:

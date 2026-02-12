@@ -22,3 +22,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 BulletPool="*res://scripts/bullet_pool.gd"
+EnemyPool="*res://scripts/enemy_pool.gd"
