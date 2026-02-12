@@ -11,6 +11,15 @@ func reset() -> void:
 	linear_velocity = Vector3.ZERO
 	global_position = Vector3.ZERO
 
+func fire(target: Vector3) -> void:
+	"""Dispara el bullet automáticamente según su tipo"""
+	if name == "BulletBlue":
+		# Si es bullet azul, disparo parabólico
+		parabolic(target)
+	else:
+		# Si es bullet normal, disparo lineal
+		linear(target)
+
 func linear(target: Vector3) -> void:
 	var Ballistics = load("res://scripts/ballistics.gd")
 	var v = Ballistics.solve_direct_velocity(global_position, target, BULLET_SPEED)

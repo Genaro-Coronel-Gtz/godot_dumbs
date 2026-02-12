@@ -45,7 +45,10 @@ func _physics_process(delta):
 			time_since_last_shot = 0.0
 
 func shoot():
-	var bullet_instance = BulletPool.get_bullet()
+	# Tipo de bullet disparar (50% normal, 50% azul)
+	var bullet_type = BulletPool.BulletType.NORMAL if randi_range(0, 2) == 0 else BulletPool.BulletType.BLUE
+	
+	var bullet_instance = BulletPool.get_bullet(bullet_type)
 	var spawn_point = get_node("BulletSpawnPoint")
 	
 	# Establecer la posicion global
@@ -54,7 +57,6 @@ func shoot():
 	# El player tiene altura 2.0, asi que su centro está a 1.0 unidades arriba
 	var target_position = player.global_position + Vector3(0, 1.0, 0)
 
-	# Usar la API publica del bullet para lanzarlo
-	#bullet_instance.linear(target_position)
-	bullet_instance.parabolic(target_position)
+	# Disparar el bullet (el método fire decide si es lineal o parabólico según el tipo)
+	bullet_instance.fire(target_position)
 	#print("Bullet disparado: origen=", bullet_instance.global_position, " objetivo=", target_position)
